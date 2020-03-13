@@ -1,32 +1,29 @@
-
-
 import javax.swing.*;
-import java.util.Scanner;
+import java.awt.event.*;
 
 public class ClimbingApp {
 	public static void main (String[] args){
-		//System.out.println("Hello World!");
-		String input;
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("If you would like to quit, type 'exit'");
-	
+
 		JFrame window = new JFrame();
-		JButton button1 = new JButton("Click Me!");
-		button1.setBounds (10,10,100,130); //X axis, Y axis, Width, Height
-		window.add(button1);
-	
 		window.setLayout(null);
-		window.setSize(400,500);
-		window.setVisible(true);		
+                window.setSize(400,500); //X axis, Y axis
+
+		JButton button1 = new JButton("Exit");
+		button1.setBounds(10,450,50,25); //X axis, Y axis, Width, Height
 		
-		while (true) {
-			input = scanner.nextLine();
-			if (input.equals("exit") || input.equals("Exit") || input.equals("EXIT")) {
-				System.exit(0);
+		JTextField welcome = new JTextField();
+		welcome.setBounds(10,10,250,20);
+		welcome.setText("Welcome to Climb Tracker V0.0.1");
+
+		button1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				welcome.setText("See you soon!");
+				window.dispose();
 			}
-			else {
-				System.out.println("Command '" + input + "' not understood. Please try again.");
-			}
-		}
+		});
+		window.add(button1);
+		window.add(welcome);		
+		window.setVisible(true);
 	}
 }
